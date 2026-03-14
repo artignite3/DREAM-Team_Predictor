@@ -179,7 +179,7 @@ def parse_all_matches(data_dir, format_filter=None):
     Loops through ALL JSON files → builds master DataFrame
     """
     all_rows = []
-    json_files = list(Path(data_dir).glob('**/*.json'))
+    json_files = list(Path(data_dir).glob('**/*.json'))[:5]
     
     print(f"Found {len(json_files)} JSON files")
     

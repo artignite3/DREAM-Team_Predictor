@@ -199,18 +199,10 @@ def parse_all_matches(data_dir, format_filter=None):
         except Exception as e:
             print(f"Error parsing {filepath}: {e}")
             continue
-        
+    
     df = pd.DataFrame(all_rows)
     df['date'] = pd.to_datetime(df['date'])
     df = df.sort_values(['player', 'date']).reset_index(drop=True)
-
+    
     print(f"Total rows: {len(df)} | Players: {df['player'].nunique()}")
-
-    # Save CSV to project root
-    output_file = Path(__file__).resolve().parents[2] / "test_output_5_matches.csv"
-    df.to_csv(output_file, index=False)
-
-    print(f"CSV created at: {output_file}")
-    print(df.head())
-
     return df
